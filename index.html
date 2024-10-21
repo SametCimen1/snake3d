@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta property="og:title" content="Snake 3D" />
+		<meta name="description" content="A simple 3D snake indie game!" />
+		<meta property="og:description" content="A simple 3D snake indie game!" />
+		<meta property="og:url" content="https://snake3d.vercel.app/" />
+		<meta property="og:image" content="/og-preview.png" />
+		<title>Snake 3D Game</title>
+	</head>
+	<body>
+		<script type="module" src="/main.js"></script>
+		<audio
+			style="opacity: 0"
+			id="audio"
+			class="fixed top-0 left-0 z-50"
+			controls
+			loop="true"
+			src="/snake-3d-short-audio.mp3"
+		>
+			<!-- <a href="/media/cc0-audio/t-rex-roar.mp3"> Download audio </a> -->
+		</audio>
+		<button
+			style="opacity: 0"
+			id="btn-play"
+			class="fixed w-max drop-shadow-xl top-[75%] lg:top-[60%] left-1/2"
+		>
+			<img
+				id="btn-play-img"
+				class="h-[4rem] lg:h-[6rem]"
+				src="/btn-play-bg-green.png"
+				alt=""
+				height="20"
+			/>
+		</button>
+
+		<button
+			style="opacity: 1"
+			id="btn-volume"
+			class="fixed w-max drop-shadow-xl hover:bg-white/30 rounded-[7px] right-4 bottom-4 after:hidden after:content-[''] after:bg-red-500 after:h-1 after:w-14 after:rotate-45 after:absolute after:top-1/2 after:left-1/2 after:-translate-x-1/2 after:-translate-y-1/2"
+		>
+			<div class="absolute animate-ping inset-0 bg-white/30 scale-105"></div>
+
+			<span class="absolute" style="opacity: 0">mute</span>
+		</button>
+
+		<!-- <div
+			id="mobile-arrows"
+			style="visibility: hidden; opacity: 0"
+			class="lg:hidden content-center grid grid-cols-3 grid-rows-3 fixed bottom-28 left-1/2 -translate-x-1/2 w-[80vw]"
+		>
+			<div class="row-start-1 col-start-2">
+				<img class="w-full" src="/arrow.png" data-direction="ArrowTop" />
+			</div>
+			<div class="row-start-2">
+				<img
+					class="w-full"
+					style="transform: rotate(-90deg)"
+					src="/arrow.png"
+					data-direction="ArrowLeft"
+				/>
+			</div>
+			<div class="row-start-2 col-start-3">
+				<img
+					class="w-full"
+					style="transform: rotate(90deg)"
+					src="/arrow.png"
+					data-direction="ArrowRight"
+				/>
+			</div>
+			<div class="row-start-3 col-start-2">
+				<img
+					class="w-full"
+					style="transform: rotate(180deg)"
+					src="/arrow.png"
+					data-direction="ArrowDown"
+				/>
+			</div>
+		</div> -->
+
+	</body>
+</html>
