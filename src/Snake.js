@@ -22,27 +22,20 @@ const DOWN = new Vector3(0, 0, 1)
 const LEFT = new Vector3(-1, 0, 0)
 const RIGHT = new Vector3(1, 0, 0)
 
-
-
-
-
 export default class Snake extends EventDispatcher {
 	direction = RIGHT
 	indexes = []
 	speedInterval = 240
 
-	
-
 	constructor({ scene, resolution = new Vector2(10, 10), color, mouthColor }) {
-		// creare la testa
 		super()
 
 		this.scene = scene
 		this.resolution = resolution
-		this.mouthColor = mouthColor
+		this.mouthColor = 0xFF0000
 
 		if (color) {
-			NODE_MATERIAL.color.set(color)
+			NODE_MATERIAL.color.set(0xFF0000)
 		}
 
 		this.init()
@@ -84,24 +77,24 @@ export default class Snake extends EventDispatcher {
 		const mouthMesh = new Mesh(
 			new RoundedBoxGeometry(1.05, 0.1, 0.6, 5, 0.1),
 			new MeshStandardMaterial({
-				color: this.mouthColor, //0x614bdd,
+				color: this.mouthColor,
 			})
 		)
 
-		mouthMesh.rotation.x = -Math.PI * 0.07
+
 		mouthMesh.position.z = 0.23
-		mouthMesh.position.y = -0.19
+		mouthMesh.position.y = 0
 
 		this.mouth = mouthMesh
 
-		headMesh.add(rightEye, leftEye, mouthMesh)
+		headMesh.add( mouthMesh)
 
 		headMesh.lookAt(headMesh.position.clone().add(this.direction))
 	}
 
 	init() {
 		this.direction = RIGHT
-		this.iMoving = null;
+		this.iMoving = null
 
 		const head = new ListNode(new SnakeNode(this.resolution))
 
@@ -125,18 +118,6 @@ export default class Snake extends EventDispatcher {
 		this.scene.add(head.data.mesh)
 	}
 
-	// move() {
-	// 	this.update()
-
-	// 	this.isMoving = setTimeout(() => {
-	// 		this.move()
-	// 	}, this.speedInterval)
-	// }
-
-	// stop() {
-	// 	clearTimeout(this.isMoving)
-	// 	this.isMoving = null
-	// }
 
 	setDirection(keyCode) {
 		let newDirection
@@ -164,32 +145,16 @@ export default class Snake extends EventDispatcher {
 
 		const dot = this.direction.dot(newDirection)
 		if (dot === 0) {
-			// this.directions.push()
 			this.newDirection = newDirection
-			// this.stop()
-			// this.move()
 		}
 	}
 
-		
-
-
 	update() {
-		// console.log('update')
 
-
-		let number = Math.random() * 10;
-	
-
-		
-		
-		
 		if (this.newDirection) {
 			this.direction = this.newDirection
 			this.newDirection = null
 		}
-		// const direction =
-		// 	this.directions.length > 1 ? this.directions.shift() : this.directions[0]
 
 		let currentNode = this.end
 
@@ -216,7 +181,6 @@ export default class Snake extends EventDispatcher {
 		}
 		const headPos = currentNode.data.mesh.position
 		headPos.add(this.direction)
-		// currentNode.data.mesh.position.add(this.direction)
 		const headMesh = this.body.head.data.mesh
 		headMesh.lookAt(headMesh.position.clone().add(this.direction))
 
@@ -233,7 +197,6 @@ export default class Snake extends EventDispatcher {
 		}
 
 		this.updateIndexes()
-		// console.log(this.indexes)
 
 		this.dispatchEvent({ type: 'updated' })
 	}

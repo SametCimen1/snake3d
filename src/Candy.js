@@ -8,7 +8,7 @@ import Entity from './Entity'
 
 const GEOMETRY = new SphereGeometry(0.3, 20, 20)
 const MATERIAL = new MeshStandardMaterial({
-	color: "rgb(255, 0, 0)",
+	color: 0xFF0000,
 })
 
 export default class Candy extends Entity {
@@ -17,10 +17,8 @@ export default class Candy extends Entity {
 		super(mesh, resolution)
 
 		if (color) {
-			MATERIAL.color.set('rgb(255, 0, 0)')
+			MATERIAL.color.set(color)
 		}
-
-		MATERIAL.color.set('rgb(255, 0, 0)')
 
 		this.points = Math.floor(Math.random() * 3) + 1
 		this.mesh.scale.setScalar(0.5 + (this.points * 0.5) / 3)

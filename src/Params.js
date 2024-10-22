@@ -1,10 +1,10 @@
 import { Vector2 } from 'three'
 
-const resolution = new Vector2(15, 15)
+const resolution = new Vector2(10, 10)
 
 const colors = {
-	groundColor: '#ff7438',
-	fogColor: '#d68a4c',
+	groundColor: '#0000',
+	fogColor: '#0000',
 }
 
 export { resolution, colors }
